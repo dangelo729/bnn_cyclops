@@ -1,5 +1,5 @@
 build/recorder.no-line-in/app.elf/drivers/adc.o: drivers/adc.cpp \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/adc.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/adc.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h \
@@ -159,7 +159,7 @@ build/recorder.no-line-in/app.elf/drivers/adc.o: drivers/adc.cpp \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/stl_bvector.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  libDaisy/Drivers/CMSIS/Include/core_cm7.h \
@@ -271,24 +271,24 @@ build/recorder.no-line-in/app.elf/drivers/adc.o: drivers/adc.cpp \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/common/io.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/common/config.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/util/hysteresis_filter.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/util/interpolator.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_system.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dma.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dmamux.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/system.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/irq.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/common/io.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/common/config.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/util/hysteresis_filter.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/util/interpolator.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_system.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dma.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dmamux.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert \
  /Applications/ARM/arm-none-eabi/include/assert.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling_impl.inc.h
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h
 drivers/adc.cpp :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/adc.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/adc.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h :
@@ -448,7 +448,7 @@ drivers/adc.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/stl_bvector.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
  libDaisy/Drivers/CMSIS/Include/core_cm7.h :
@@ -560,19 +560,19 @@ drivers/adc.cpp :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/common/io.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/common/config.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/util/hysteresis_filter.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/util/interpolator.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_system.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dma.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dmamux.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/system.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/irq.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/common/io.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/common/config.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/util/hysteresis_filter.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/util/interpolator.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_system.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dma.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_dmamux.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert :
  /Applications/ARM/arm-none-eabi/include/assert.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling_impl.inc.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h :

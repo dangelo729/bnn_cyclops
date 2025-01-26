@@ -159,11 +159,11 @@ build/recorder.no-line-in/app.elf/drivers/flash.o: drivers/flash.cpp \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/stl_bvector.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert \
  /Applications/ARM/arm-none-eabi/include/assert.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  libDaisy/Drivers/CMSIS/Include/core_cm7.h \
@@ -275,9 +275,9 @@ build/recorder.no-line-in/app.elf/drivers/flash.o: drivers/flash.cpp \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling_impl.inc.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/system.h \
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_mdma.h
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h \
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_mdma.h
 drivers/flash.cpp :
  drivers/flash.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
@@ -439,11 +439,11 @@ drivers/flash.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/stl_bvector.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert :
  /Applications/ARM/arm-none-eabi/include/assert.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
  libDaisy/Drivers/CMSIS/Include/core_cm7.h :
@@ -555,6 +555,6 @@ drivers/flash.cpp :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/profiling_impl.inc.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/drivers/system.h :
- /Users/peterdangelo/Desktop/BNN/recorder-fw-main-scrub-2.0/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_mdma.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h :
+ /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_mdma.h :

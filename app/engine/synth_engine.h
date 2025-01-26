@@ -61,22 +61,22 @@ namespace recorder
             aa_filter_.Reset();
 
             // Example delay parameters
-            delay_time_ = 0.1f;
+            delay_time_ = 0.2f;
             delay_feedback_ = 0.1f;
 
             // Initialize formant filter
             formant_filter_.Init(sample_rate_);
             freq_mult_ = 1.0f;
             formant_filter_.SetVoice(FormantFilter::VOICE_NEUTRAL);
-            formant_filter_.setQMult(4.0f);
+            formant_filter_.setQMult(1.0f);
             formant_filter_.setFreqMult(0.75f);
             formant_filter_.SetMode(FormantFilter::FILTER_MODE_NORMAL);
             attack_formant_rate_ = 0.001f;
             lowpass_filter_.Init(20000.0f, sample_rate_, 0.0f);
 
             // Set up pulse generator
-            pulse_generator_.SetBaseDutyCycle(0.01f);
-            duty_gain_ = 3.8f;
+            pulse_generator_.SetBaseDutyCycle(0.0003f);
+            duty_gain_ = 6.8f;
             freq_wobbliness_ = 0.03f;
             pulse_generator_.SetDutyCycleRandomization(0.0f);
 
@@ -129,8 +129,8 @@ namespace recorder
             vibrato_.SetDepth(vibrato_pot_val);
 
             // Map vibrato pot to some delay parameters
-          //  delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.0f, .9f);
-          //  delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.8f, 0.1f);
+            //  delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.0f, .9f);
+            //  delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.8f, 0.1f);
 
             //------------------------------------------------------------------
             //  Handle fundamental-frequency selection button
@@ -372,11 +372,11 @@ namespace recorder
             // Generate one sample from the pulse oscillator
             float sample = pulse_generator_.GenerateSample(phase_, phaseIncrement);
 
-            // Apply lowpass
-            sample = lowpass_filter_.Process(sample);
-
             // Formant filter
             sample = formant_filter_.Process(sample);
+
+            // Apply lowpass
+            sample = lowpass_filter_.Process(sample);
 
             // Envelope
             sample *= adsr_value_;
