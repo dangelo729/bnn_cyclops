@@ -1,0 +1,57 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+            "folder_exclude_patterns":
+            [
+                "build",
+                "__pycache__",
+            ],
+            "file_exclude_patterns":
+            [
+                "*.sublime-project",
+                ".gitmodules",
+                "stm32h742xx.h",
+                "stm32h743xx.h",
+                "stm32h745xx.h",
+                "stm32h747xx.h",
+                // "stm32h750xx.h",
+                "stm32h753xx.h",
+                "stm32h755xx.h",
+                "stm32h757xx.h",
+            ],
+		},
+	],
+
+    "settings":
+    {
+        "trim_trailing_white_space_on_save": true,
+    },
+
+    "build_systems":
+    [
+        {
+            "name": "make",
+            "shell_cmd": "make -j\\$(nproc)",
+            "file_regex": "^\\s*(?:[^:]*/vref/)?([^:]+):(\\d+):(\\d+):\\s*(.+)$",
+            "syntax": "Packages/Makefile/Make Output.sublime-syntax",
+            "working_dir": "$project_path",
+            "env":
+            {
+                "GCC_PATH": "/usr/local/share/gcc-arm-none-eabi-9-2019-q4-major/bin"
+            },
+            "variants":
+            [
+                {
+                    "name": "clean",
+                    "shell_cmd": "make clean",
+                },
+                {
+                    "name": "run",
+                    "shell_cmd": "make -j\\$(nproc) load",
+                },
+            ],
+        },
+    ],
+}

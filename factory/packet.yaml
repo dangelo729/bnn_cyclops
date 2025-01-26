@@ -1,0 +1,17 @@
+device_state:
+  pot1: f
+  pot2: f
+  pot3: f
+  pot4: f
+  pot5: f
+  pot6: f
+  pot7: f
+  photocell: f
+  bool_bits:
+    format: B
+    fields:
+      play: "?"
+      record: "?"
+      loop: "?"
+      reverse: "?"
+      line_in_detect: "?"

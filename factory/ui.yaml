@@ -1,0 +1,38 @@
+sections:
+  Switches:
+    play:
+      field: play
+    record:
+      field: record
+    loop:
+      field: loop
+    reverse:
+      field: reverse
+  Pots:
+    pot 1:
+      field: pot1
+      format: '> .4f'
+    pot 2:
+      field: pot2
+      format: '> .4f'
+    pot 3:
+      field: pot3
+      format: '> .4f'
+    pot 4:
+      field: pot4
+      format: '> .4f'
+    pot 5:
+      field: pot5
+      format: '> .4f'
+    pot 6:
+      field: pot6
+      format: '> .4f'
+    pot 7:
+      field: pot7
+      format: '> .4f'
+    photocell:
+      field: photocell
+      format: '> .4f'
+  Detect:
+    line in:
+      field: line_in_detect
