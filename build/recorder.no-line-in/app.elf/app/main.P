@@ -163,12 +163,12 @@ build/recorder.no-line-in/app.elf/app/main.o: app/main.cpp \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cinttypes \
  /Applications/ARM/arm-none-eabi/include/inttypes.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/system.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/gpio.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert \
  /Applications/ARM/arm-none-eabi/include/assert.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  libDaisy/Drivers/CMSIS/Include/core_cm7.h \
@@ -280,57 +280,58 @@ build/recorder.no-line-in/app.elf/app/main.o: app/main.cpp \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/switches.h \
- /Users/peterdangelo/Desktop/BNN/cicada/common/config.h \
- /Users/peterdangelo/Desktop/BNN/cicada/common/io.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/debouncer.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/analog.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/adc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/hysteresis_filter.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/interpolator.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/dac.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/sample_memory.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/flash.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/crc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_crc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/save_data.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling_impl.inc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/switches.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/config.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/io.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/debouncer.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/analog.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/adc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/hysteresis_filter.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/interpolator.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/dac.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/sample_memory.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/flash.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/crc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_crc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/save_data.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstring \
  /Applications/ARM/arm-none-eabi/include/string.h \
  /Applications/ARM/arm-none-eabi/include/strings.h \
  /Applications/ARM/arm-none-eabi/include/sys/string.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/buffer_chain.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/edge_detector.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/buffer_chain.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/edge_detector.h \
  app/monitor/monitor.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/a85.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/packet.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/message.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/recording_engine.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/resampler.h \
- /Users/peterdangelo/Desktop/BNN/cicada/util/fifo.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/aafilter.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/sos.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/playback_engine.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/sample_player.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/a85.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/packet.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/message.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/recording_engine.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/resampler.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/fifo.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/aafilter.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/sos.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/playback_engine.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/sample_player.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/chrono \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/ratio \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/ctime \
  /Applications/ARM/arm-none-eabi/include/time.h \
  /Applications/ARM/arm-none-eabi/include/machine/time.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/parse_numbers.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/delay_engine.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/compressor.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/envelope_follower.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/one_pole.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/resonant_filter.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/ring_modulator.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/biquad.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/synth_engine.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/formant_filter.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/formant_biquad.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/pulse_generator.h \
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/vibrato.h
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/delay_engine.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/compressor.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/envelope_follower.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/resonant_filter.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/ring_modulator.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/biquad.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/synth_engine.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/formant_filter.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/formant_biquad.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/pulse_generator.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/vibrato.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole_highpass.h
 app/main.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h :
@@ -496,12 +497,12 @@ app/main.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/pstl/execution_defs.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cinttypes :
  /Applications/ARM/arm-none-eabi/include/inttypes.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/system.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/gpio.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert :
  /Applications/ARM/arm-none-eabi/include/assert.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h :
  libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
  libDaisy/Drivers/CMSIS/Include/core_cm7.h :
@@ -613,54 +614,55 @@ app/main.cpp :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/switches.h :
- /Users/peterdangelo/Desktop/BNN/cicada/common/config.h :
- /Users/peterdangelo/Desktop/BNN/cicada/common/io.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/debouncer.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/analog.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/adc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/hysteresis_filter.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/interpolator.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/dac.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/sample_memory.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/flash.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/crc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_crc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/save_data.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling_impl.inc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/switches.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/config.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/io.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/debouncer.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/analog.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/adc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/hysteresis_filter.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/interpolator.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/dac.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/sample_memory.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/flash.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/crc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_crc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/save_data.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstring :
  /Applications/ARM/arm-none-eabi/include/string.h :
  /Applications/ARM/arm-none-eabi/include/strings.h :
  /Applications/ARM/arm-none-eabi/include/sys/string.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/buffer_chain.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/edge_detector.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/buffer_chain.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/edge_detector.h :
  app/monitor/monitor.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/a85.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/packet.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/monitor/message.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/recording_engine.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/resampler.h :
- /Users/peterdangelo/Desktop/BNN/cicada/util/fifo.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/aafilter.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/sos.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/playback_engine.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/sample_player.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/a85.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/packet.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/monitor/message.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/recording_engine.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/resampler.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/fifo.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/aafilter.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/sos.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/playback_engine.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/sample_player.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/chrono :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/ratio :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/ctime :
  /Applications/ARM/arm-none-eabi/include/time.h :
  /Applications/ARM/arm-none-eabi/include/machine/time.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/parse_numbers.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/delay_engine.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/compressor.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/envelope_follower.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/one_pole.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/resonant_filter.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/ring_modulator.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/biquad.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/synth_engine.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/formant_filter.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/formant_biquad.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/pulse_generator.h :
- /Users/peterdangelo/Desktop/BNN/cicada/app/engine/vibrato.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/delay_engine.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/compressor.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/envelope_follower.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/resonant_filter.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/ring_modulator.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/biquad.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/synth_engine.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/formant_filter.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/formant_biquad.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/pulse_generator.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/vibrato.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole_highpass.h :

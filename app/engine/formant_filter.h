@@ -12,16 +12,16 @@ namespace recorder
         // Enumeration of vowels
         enum Vowel
         {
-            VOWEL_I,    // /i/ ("see")
-            VOWEL_IH,   // /ɪ/ ("sit")
-            VOWEL_EH,   // /ɛ/ ("set")
-            VOWEL_AE,   // /æ/ ("sat")
-            VOWEL_A,    // /a/ ("father")
-            VOWEL_O,    // /ɔ/ ("saw")
-            VOWEL_OU,   // /o/ ("go")
-            VOWEL_UH,   // /ʊ/ ("put")
-            VOWEL_U,    // /u/ ("boot")
-            VOWEL_SCHWA // /ə/ ("sofa")
+            VOWEL_I,    // /i/ as in "see"
+            VOWEL_E,    // /e/ as in "bed"
+            VOWEL_A,    // /a/ as in "father"
+            VOWEL_O,    // /o/ as in "go"
+            VOWEL_U,    // /u/ as in "boot"
+            VOWEL_OU,   // /ou/ diphthong (approx. "boat")
+            VOWEL_6,
+            VOWEL_7,
+            VOWEL_8,
+            VOWEL_9
         };
 
         // We only keep the NEUTRAL voice type
@@ -50,6 +50,7 @@ namespace recorder
         };
 
         // The 2D array of vowel data for our single (NEUTRAL) voice
+        // Indices: vowelData[VOICE_COUNT][VOWEL_...]
         static const VowelFormantData vowelData[VOICE_COUNT][10];
 
         // Initialize the filter with a given sample rate
@@ -101,10 +102,8 @@ namespace recorder
         // You might want to clamp it just to be safe
         void SetWahPosition(float pos)
         {
-            if (pos < 0.0f)
-                pos = 0.0f;
-            if (pos > 1.0f)
-                pos = 1.0f;
+            if (pos < 0.0f) pos = 0.0f;
+            if (pos > 1.0f) pos = 1.0f;
             wahPosition_ = pos;
         }
 
@@ -155,23 +154,10 @@ namespace recorder
                 targetFormantFreqs_[1] = vowelA.F2 + wahPosition_ * (vowelOU.F2 - vowelA.F2);
                 targetFormantFreqs_[2] = vowelA.F3 + wahPosition_ * (vowelOU.F3 - vowelA.F3);
 
-/*
-                targetFormantFreqs_[0] = vowelA.F1 * (1 - wahPosition_) + (vowelOU.F1 - wahPosition_);
-                targetFormantFreqs_[1] = vowelA.F2 * (1 - wahPosition_) + (vowelOU.F2 - wahPosition_);
-                targetFormantFreqs_[2] = vowelA.F3 * (1 - wahPosition_) + (vowelOU.F3 - wahPosition_);
-*/
                 // Interpolate Q1, Q2, Q3
                 targetFormantQs_[0] = vowelA.Q1 + wahPosition_ * (vowelOU.Q1 - vowelA.Q1);
                 targetFormantQs_[1] = vowelA.Q2 + wahPosition_ * (vowelOU.Q2 - vowelA.Q2);
                 targetFormantQs_[2] = vowelA.Q3 + wahPosition_ * (vowelOU.Q3 - vowelA.Q3);
-
-
-/*
-                targetFormantQs_[0] = vowelA.Q1 * (1 - wahPosition_) + (vowelOU.Q1 - wahPosition_);
-                targetFormantQs_[1] = vowelA.Q2 * (1 - wahPosition_) + (vowelOU.Q2 - wahPosition_);
-                targetFormantQs_[2] = vowelA.Q3 * (1 - wahPosition_) + (vowelOU.Q3 - wahPosition_);
-
-                */
             }
 
             // Smoothly move current formants toward the target formants
@@ -198,7 +184,7 @@ namespace recorder
             float output3 = filters_[2].Process(input);
 
             // Sum the outputs and apply a gain factor
-            float output = (output1 + output2 * 0.4f + output3 * 0.3f) * gainFactor_;
+            float output = (output1 + output2 * 0.3f + output3 * 0.3f);
             return output;
         }
 
@@ -233,30 +219,36 @@ namespace recorder
 
     // ----------------------------------------------------------------------------
     // Define the vowel data for the single (NEUTRAL) voice type.
-    // vowelData[VoiceType=NEUTRAL][Vowel] = { F1, F2, F3, Q1, Q2, Q3 }
+    //
+    // These formant frequencies (F1, F2, F3) and Qs (Q1, Q2, Q3) come from
+    // typical "male" vowel data. The Q values are approximate, computed by
+    // freq / bandwidth (bandwidth ~ 60 Hz for F1, ~90 Hz for F2, ~150 Hz for F3).
+    // You can adjust them to taste.
     // ----------------------------------------------------------------------------
+
     const FormantFilter::VowelFormantData
         FormantFilter::vowelData[FormantFilter::VOICE_COUNT][10] =
-            {
-                {// VOWEL_I  ("see")
-                 {270.0f, 2290.0f, 3010.0f, 10.0f, 9.0f, 9.0f},
-                 // VOWEL_IH ("sit")
-                 {390.0f, 1990.0f, 2550.0f, 12.0f, 11.0f, 10.0f},
-                 // VOWEL_EH ("set")
-                 {530.0f, 1840.0f, 2480.0f, 11.0f, 11.0f, 10.0f},
-                 // VOWEL_AE ("sat")
-                 {660.0f, 1720.0f, 2410.0f, 11.0f, 11.0f, 10.0f},
-                 // VOWEL_A  ("father")
-                 {730.0f, 1090.0f, 2440.0f, 10.0f, 8.0f, 9.0f},
-                 // VOWEL_O  ("saw")
-                 {570.0f, 840.0f, 2410.0f, 11.0f, 10.0f, 10.0f},
-                 // VOWEL_OU ("go")
-                 {500.0f, 700.0f, 2450.0f, 11.0f, 10.0f, 10.0f},
-                 // VOWEL_UH ("put")
-                 {440.0f, 1020.0f, 2240.0f, 12.0f, 10.0f, 10.0f},
-                 // VOWEL_U  ("boot")
-                 {300.0f, 870.0f, 2240.0f, 10.0f, 9.0f, 9.0f},
-                 // VOWEL_SCHWA ("sofa")
-                 {500.0f, 1500.0f, 2400.0f, 12.0f, 11.0f, 10.0f}}};
+    {{
+        // VOWEL_I (e.g. "see")
+        { 270.0f, 2290.0f, 3010.0f,  4.50f, 25.44f, 20.07f },
+        // VOWEL_E (e.g. "bed")
+        { 530.0f, 1850.0f, 2500.0f,  8.83f, 20.56f, 16.67f },
+        // VOWEL_A (e.g. "father")
+        { 730.0f, 1090.0f, 2440.0f, 12.17f, 12.11f, 16.27f },
+        // VOWEL_O (e.g. "go")
+        { 570.0f, 840.0f, 2410.0f,   9.50f,  9.33f, 16.07f },
+        // VOWEL_U (e.g. "boot")
+        { 300.0f, 870.0f, 2240.0f,   5.00f,  9.67f, 14.93f },
+        // VOWEL_OU (diphthong "boat")
+        { 450.0f, 1040.0f, 2240.0f,  7.50f, 11.56f, 14.93f },
+        // VOWEL_6 (unused or can add more)
+        { 0.0f, 0.0f, 0.0f,          1.0f, 1.0f, 1.0f },
+        // VOWEL_7
+        { 0.0f, 0.0f, 0.0f,          1.0f, 1.0f, 1.0f },
+        // VOWEL_8
+        { 0.0f, 0.0f, 0.0f,          1.0f, 1.0f, 1.0f },
+        // VOWEL_9
+        { 0.0f, 0.0f, 0.0f,          1.0f, 1.0f, 1.0f }
+    }};
 
 } // namespace recorder

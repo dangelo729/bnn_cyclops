@@ -12,6 +12,7 @@
 #include "app/engine/pulse_generator.h"
 #include "app/engine/delay_engine.h"
 #include "app/engine/vibrato.h"
+#include "app/engine/one_pole_highpass.h"
 
 namespace recorder
 {
@@ -32,7 +33,7 @@ namespace recorder
               previousTargetIndex_(-1),
               adsr_state_(ADSRState::kIdle),
               adsr_value_(0.0f),
-              freq_rate_(0.001f),
+              freq_rate_(0.01f),
               freq_wobbliness_(0.0f),
               previous_formant_pot_val_(0.0f) // track the last pot value
         {
@@ -61,38 +62,41 @@ namespace recorder
             aa_filter_.Reset();
 
             // Example delay parameters
-            delay_time_ = 0.2f;
-            delay_feedback_ = 0.1f;
+            delay_time_ = 0.3f;
+            delay_feedback_ = 0.4f;
 
             // Initialize formant filter
             formant_filter_.Init(sample_rate_);
             freq_mult_ = 1.0f;
             formant_filter_.SetVoice(FormantFilter::VOICE_NEUTRAL);
-            formant_filter_.setQMult(1.0f);
-            formant_filter_.setFreqMult(0.75f);
+            formant_filter_.setQMult(6.0f);
+            formant_filter_.setFreqMult(1.4f);
             formant_filter_.SetMode(FormantFilter::FILTER_MODE_NORMAL);
+            formant_filter_.SetFormantRate(0.000001f);
             attack_formant_rate_ = 0.001f;
-            lowpass_filter_.Init(20000.0f, sample_rate_, 0.0f);
+            lowpass_filter_.Init(19000.0f, sample_rate_, 0.0f);
+            highpass_filter_.Init(120.0f, sample_rate_, 0.0f);
 
             // Set up pulse generator
-            pulse_generator_.SetBaseDutyCycle(0.0003f);
-            duty_gain_ = 6.8f;
-            freq_wobbliness_ = 0.03f;
+            pulse_generator_.SetBaseDutyCycle(0.5f);
+            duty_gain_ = 2.0;
+            freq_wobbliness_ = 0.0f;
             pulse_generator_.SetDutyCycleRandomization(0.0f);
 
             // ADSR parameters
-            adsr_attack_time_ = 0.05f; // seconds
+            adsr_attack_time_ = 0.1f; // seconds
             adsr_decay_time_ = 0.2f;
             adsr_sustain_level_ = 0.8f;
             adsr_release_time_ = 0.1f;
 
             // Set initial formant
-            formant_filter_.SetFormantRate(0.0001f);
+            formant_filter_.SetFormantRate(0.005f);
 
             // Initialize and set default vibrato parameters
             vibrato_.Init(sample_rate_);
             // Example: vibrato rate = 5 Hz, depth = 0.12, buildup = 1.8 seconds
             vibrato_.SetParameters(6.0f, 0.12f, 1.8f);
+            formant_filter_.setFreqMult(mapFloat(fundamentalFreq_, kMinFundamental, kMaxFundamental, 0.7f, 2.0f));
         }
 
         /**
@@ -104,7 +108,7 @@ namespace recorder
          * @param hold                  Whether we are in "hold" mode for the voice button
          * @param formant_pot_val       Some external pot controlling formant/WAH position
          * @param vibrato_pot_val       Pot controlling vibrato depth
-         * @param freq_select_button    button for adjusting the fundamental frequency
+         * @param freq_select_button    NEW: button for adjusting the fundamental frequency
          */
         void Process(float (&block)[kAudioOSFactor],
                      bool button_pressed,
@@ -115,11 +119,16 @@ namespace recorder
                      bool freq_select_button)
         {
             // Only do this "ROBOT TO MONK" mapping if the formant pot value has changed.
-            // if (abs(formant_pot_val - previous_formant_pot_val_) > 0.01f)
-            // {
-            //     RobotToMonk(formant_pot_val);
-            // }
-            // previous_formant_pot_val_ = formant_pot_val;
+            if (abs(formant_pot_val - previous_formant_pot_val_) > 0.01f)
+            {
+                freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.001f, 0.1f);
+                pulse_generator_.SetBaseDutyCycle(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.003f, 0.2f));
+               // formant_filter_.setFreqMult(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.85f, 1.2f));
+                freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.03f, 0.0f);
+                pulse_generator_.SetDutyCycleRandomization(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.0f));
+                formant_filter_.SetFormantRate(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00001f, 0.1f));
+                previous_formant_pot_val_ = formant_pot_val;
+            }
 
             // Update formant/WAH parameters
             formant_filter_.UpdateParameters();
@@ -129,8 +138,8 @@ namespace recorder
             vibrato_.SetDepth(vibrato_pot_val);
 
             // Map vibrato pot to some delay parameters
-            //  delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.0f, .9f);
-            //  delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.8f, 0.1f);
+            delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.1f, 0.3f);
+            delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.02f, 0.6f);
 
             //------------------------------------------------------------------
             //  Handle fundamental-frequency selection button
@@ -201,7 +210,7 @@ namespace recorder
 
                 // Remap pot [0..1] to [C1..C6]
                 fundamentalFreq_ = mapFloat(pot_value, 0.0f, 1.0f, kMinFundamental, kMaxFundamental);
-
+                formant_filter_.setFreqMult(mapFloat(fundamentalFreq_, kMinFundamental, kMaxFundamental, 0.7f, 1.8f));
                 // Vibrato + smoothing
                 float freqWithVibrato = vibrato_.Process(fundamentalFreq_);
                 SmoothFrequencyToward(freqWithVibrato);
@@ -323,6 +332,7 @@ namespace recorder
         OnePoleLowpass lowpass_filter_;
         PulseGenerator pulse_generator_;
         DelayEngine delay_;
+        OnePoleHighpass highpass_filter_;
 
         // Vibrato effect
         Vibrato vibrato_;
@@ -342,16 +352,6 @@ namespace recorder
         //                              PRIVATE METHODS
         //--------------------------------------------------------------------------
 
-        void RobotToMonk(float formant_pot_val)
-        {
-            freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00001f, 0.008f);
-            pulse_generator_.SetBaseDutyCycle(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.0003f, 0.5f));
-            formant_filter_.setFreqMult(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.6f, 1.6f));
-            freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.03f, 0.0f);
-            pulse_generator_.SetDutyCycleRandomization(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00f, 0.08f));
-            formant_filter_.SetFormantRate(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.000000001f, 0.008f));
-            previous_formant_pot_val_ = formant_pot_val;
-        }
         float RenderOneSample()
         {
             // If envelope is idle and the delay line is silent, output zero
@@ -372,20 +372,21 @@ namespace recorder
             // Generate one sample from the pulse oscillator
             float sample = pulse_generator_.GenerateSample(phase_, phaseIncrement);
 
-            // Formant filter
-            sample = formant_filter_.Process(sample);
-
             // Apply lowpass
             sample = lowpass_filter_.Process(sample);
+
+            // Formant filter
+            sample = formant_filter_.Process(sample);
 
             // Envelope
             sample *= adsr_value_;
 
+            // Additional gain for narrower pulses, if needed
+            sample *= duty_gain_;
+            sample = highpass_filter_.Process(sample);
+
             // Delay effect
             sample = delay_.Process(sample, delay_time_, delay_feedback_);
-
-            // Additional gain for narrower pulses
-            sample *= duty_gain_;
 
             return sample;
         }
@@ -560,7 +561,7 @@ namespace recorder
         FormantFilter::Vowel GetRandomVowel()
         {
             // 10 total vowels: VOWEL_I to VOWEL_SCHWA
-            constexpr int numVowels = 10;
+            constexpr int numVowels = 6;
             int randomIndex = std::rand() % numVowels;
             return static_cast<FormantFilter::Vowel>(randomIndex);
         }

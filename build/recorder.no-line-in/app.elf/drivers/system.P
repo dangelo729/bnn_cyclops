@@ -1,5 +1,5 @@
 build/recorder.no-line-in/app.elf/drivers/system.o: drivers/system.cpp \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/system.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h \
@@ -49,7 +49,7 @@ build/recorder.no-line-in/app.elf/drivers/system.o: drivers/system.cpp \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/move.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/type_traits \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/initializer_list \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  libDaisy/src/sys/stm32h7xx_hal_conf.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
@@ -193,24 +193,24 @@ build/recorder.no-line-in/app.elf/drivers/system.o: drivers/system.cpp \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_rcc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_pwr.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_tim.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_iwdg.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_rcc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_pwr.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_tim.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_iwdg.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/gpio.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert \
  /Applications/ARM/arm-none-eabi/include/assert.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/serial.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling_impl.inc.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/irq.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/serial.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstddef \
- /Users/peterdangelo/Desktop/BNN/cicada/util/fifo.h \
- /Users/peterdangelo/Desktop/BNN/cicada/common/config.h
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/fifo.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/config.h
 drivers/system.cpp :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/system.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/system.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h :
@@ -260,7 +260,7 @@ drivers/system.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/bits/move.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/type_traits :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/initializer_list :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h :
  libDaisy/src/sys/stm32h7xx_hal_conf.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h :
@@ -404,19 +404,19 @@ drivers/system.cpp :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h :
  libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_rcc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_pwr.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_tim.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_iwdg.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_rcc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_pwr.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_tim.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_iwdg.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/gpio.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert :
  /Applications/ARM/arm-none-eabi/include/assert.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/profiling_impl.inc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/serial.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/profiling_impl.inc.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/irq.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/serial.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstddef :
- /Users/peterdangelo/Desktop/BNN/cicada/util/fifo.h :
- /Users/peterdangelo/Desktop/BNN/cicada/common/config.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/util/fifo.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/common/config.h :

@@ -1,5 +1,5 @@
 build/recorder.no-line-in/app.elf/drivers/irq.o: drivers/irq.cpp \
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/irq.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h \
@@ -12,11 +12,11 @@ build/recorder.no-line-in/app.elf/drivers/irq.o: drivers/irq.cpp \
  /Applications/ARM/arm-none-eabi/include/_newlib_version.h \
  /Applications/ARM/arm-none-eabi/include/sys/_intsup.h \
  /Applications/ARM/arm-none-eabi/include/sys/_stdint.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  libDaisy/Drivers/CMSIS/Include/core_cm7.h \
  libDaisy/Drivers/CMSIS/Include/cmsis_compiler.h \
  libDaisy/Drivers/CMSIS/Include/cmsis_gcc.h \
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert \
  /Applications/ARM/arm-none-eabi/include/assert.h \
  /Applications/ARM/arm-none-eabi/include/_ansi.h \
@@ -24,7 +24,7 @@ build/recorder.no-line-in/app.elf/drivers/irq.o: drivers/irq.cpp \
  /Applications/ARM/arm-none-eabi/include/sys/config.h \
  /Applications/ARM/arm-none-eabi/include/machine/ieeefp.h
 drivers/irq.cpp :
- /Users/peterdangelo/Desktop/BNN/cicada/drivers/irq.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/drivers/irq.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h :
@@ -37,11 +37,11 @@ drivers/irq.cpp :
  /Applications/ARM/arm-none-eabi/include/_newlib_version.h :
  /Applications/ARM/arm-none-eabi/include/sys/_intsup.h :
  /Applications/ARM/arm-none-eabi/include/sys/_stdint.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h :
  libDaisy/Drivers/CMSIS/Include/core_cm7.h :
  libDaisy/Drivers/CMSIS/Include/cmsis_compiler.h :
  libDaisy/Drivers/CMSIS/Include/cmsis_gcc.h :
- /Users/peterdangelo/Desktop/BNN/cicada/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cassert :
  /Applications/ARM/arm-none-eabi/include/assert.h :
  /Applications/ARM/arm-none-eabi/include/_ansi.h :
