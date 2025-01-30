@@ -331,7 +331,8 @@ build/recorder.no-line-in/app.elf/app/main.o: app/main.cpp \
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/formant_biquad.h \
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/pulse_generator.h \
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/vibrato.h \
- /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole_highpass.h
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole_highpass.h \
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/cyclops_compressor.h
 app/main.cpp :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/cstdint :
  /Applications/ARM/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h :
@@ -666,3 +667,4 @@ app/main.cpp :
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/pulse_generator.h :
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/vibrato.h :
  /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/one_pole_highpass.h :
+ /Users/peterdangelo/Desktop/BNN/cyclops/app/engine/cyclops_compressor.h :

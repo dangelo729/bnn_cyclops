@@ -13,6 +13,7 @@
 #include "app/engine/delay_engine.h"
 #include "app/engine/vibrato.h"
 #include "app/engine/one_pole_highpass.h"
+#include "app/engine/cyclops_compressor.h"
 
 namespace recorder
 {
@@ -29,6 +30,8 @@ namespace recorder
               offsetCounter_(0),
               was_button_pressed_(false),
               was_freq_select_button_pressed_(false),
+              was_hold_(false),
+              is_minor_(false),
               vowel_set_(false),
               previousTargetIndex_(-1),
               adsr_state_(ADSRState::kIdle),
@@ -69,7 +72,7 @@ namespace recorder
             formant_filter_.Init(sample_rate_);
             freq_mult_ = 1.0f;
             formant_filter_.SetVoice(FormantFilter::VOICE_NEUTRAL);
-            formant_filter_.setQMult(6.0f);
+            formant_filter_.setQMult(1.3);
             formant_filter_.setFreqMult(1.4f);
             formant_filter_.SetMode(FormantFilter::FILTER_MODE_NORMAL);
             formant_filter_.SetFormantRate(0.000001f);
@@ -78,11 +81,19 @@ namespace recorder
             highpass_filter_.Init(120.0f, sample_rate_, 0.0f);
 
             // Set up pulse generator
-            pulse_generator_.SetBaseDutyCycle(0.5f);
+            pulse_generator_.SetBaseDutyCycle(0.001f);
             duty_gain_ = 2.0;
             freq_wobbliness_ = 0.0f;
             pulse_generator_.SetDutyCycleRandomization(0.0f);
 
+            // Compressor
+            float threshold_dB = 17.0f;
+            float ratio = 8.0f;
+            float attack_ms = 5.0f; // fairly quick attack
+            float decay_ms = 30.0f; // moderate release
+
+            compressor_.Init(threshold_dB, ratio,
+                             attack_ms, decay_ms, sample_rate_);
             // ADSR parameters
             adsr_attack_time_ = 0.1f; // seconds
             adsr_decay_time_ = 0.2f;
@@ -118,28 +129,40 @@ namespace recorder
                      float vibrato_pot_val,
                      bool freq_select_button)
         {
-            // Only do this "ROBOT TO MONK" mapping if the formant pot value has changed.
-            if (abs(formant_pot_val - previous_formant_pot_val_) > 0.01f)
+            //-----------------------------------------------------------------------------
+            // 1) Check if the hold state changed *while* freq_select_button is held
+            //    => Toggle between major/minor scale
+            //-----------------------------------------------------------------------------
+            if (freq_select_button && (hold != was_hold_))
             {
-                freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.001f, 0.1f);
-                pulse_generator_.SetBaseDutyCycle(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.003f, 0.2f));
-               // formant_filter_.setFreqMult(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.85f, 1.2f));
-                freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.03f, 0.0f);
-                pulse_generator_.SetDutyCycleRandomization(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.0f));
-                formant_filter_.SetFormantRate(mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00001f, 0.1f));
+                // The hold switch has flipped while freq_select_button is pressed
+                is_minor_ = !is_minor_;
+            }
+
+            // Update stored hold state for next iteration
+            was_hold_ = hold;
+
+            // Only do this "ROBOT TO MONK" mapping if the formant pot value has changed
+            if (std::fabs(formant_pot_val - previous_formant_pot_val_) > 0.05f)
+            {
+                freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.001f);
+                freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00f, 0.05f);
+                pulse_generator_.SetDutyCycleRandomization(
+                    mapFloat(formant_pot_val, 0.0f, 1.0f, 0.0f, 1.0f));
+                formant_filter_.SetFormantRate(
+                    mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.00001f));
                 previous_formant_pot_val_ = formant_pot_val;
             }
 
             // Update formant/WAH parameters
             formant_filter_.UpdateParameters();
-            formant_filter_.SetWahPosition(formant_pot_val);
 
             // Vibrato depth
-            vibrato_.SetDepth(vibrato_pot_val);
+            vibrato_.SetDepth(mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.05f, 1.0f));
 
             // Map vibrato pot to some delay parameters
-            delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.1f, 0.3f);
-            delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.02f, 0.6f);
+            delay_feedback_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.05f, 0.7f);
+            delay_time_ = mapFloat(vibrato_pot_val, 0.0f, 1.0f, 0.7f, 0.05f);
 
             //------------------------------------------------------------------
             //  Handle fundamental-frequency selection button
@@ -168,13 +191,9 @@ namespace recorder
                         // Toggle mode: flip the note state
                         is_note_on_ = !is_note_on_;
                         if (is_note_on_)
-                        {
                             StartEnvelope();
-                        }
                         else
-                        {
                             StopEnvelope();
-                        }
                     }
                     else
                     {
@@ -210,7 +229,9 @@ namespace recorder
 
                 // Remap pot [0..1] to [C1..C6]
                 fundamentalFreq_ = mapFloat(pot_value, 0.0f, 1.0f, kMinFundamental, kMaxFundamental);
-                formant_filter_.setFreqMult(mapFloat(fundamentalFreq_, kMinFundamental, kMaxFundamental, 0.7f, 1.8f));
+                formant_filter_.setFreqMult(
+                    mapFloat(fundamentalFreq_, kMinFundamental, kMaxFundamental, 0.7f, 1.8f));
+
                 // Vibrato + smoothing
                 float freqWithVibrato = vibrato_.Process(fundamentalFreq_);
                 SmoothFrequencyToward(freqWithVibrato);
@@ -254,21 +275,38 @@ namespace recorder
          * @brief Diatonic scale ratios in Equal Temperament for a C-major scale
          *        (intervals: 0,2,4,5,7,9,11,12 semitones).
          */
-        static constexpr float kDiatonicRatios[] = {
-            1.0f,     // C  (0 semitones up from fundamental)
+        static constexpr float kDiatonicMajorRatios[] = {
+            1.0f,     // C  (0 semitones)
             1.12246f, // D  (2 semitones)
             1.25992f, // E  (4 semitones)
             1.33484f, // F  (5 semitones)
             1.49831f, // G  (7 semitones)
             1.68179f, // A  (9 semitones)
             1.88775f, // B  (11 semitones)
-            2.0f      // C  (12 semitones, next octave)
+            2.0f      // C  (12 semitones)
         };
-        static constexpr int kNumNotes = sizeof(kDiatonicRatios) / sizeof(kDiatonicRatios[0]);
 
-        // Pot-value thresholds for snapping to the scale (like before)
+        /**
+         * @brief Diatonic scale ratios in Equal Temperament for a C-minor scale
+         *        (intervals: 0,2,3,5,7,8,10,12 semitones).
+         */
+        static constexpr float kDiatonicMinorRatios[] = {
+            1.0f,      // C   (0 semitones)
+            1.12246f,  // D   (2 semitones)
+            1.18921f,  // Eb  (3 semitones)
+            1.33484f,  // F   (5 semitones)
+            1.49831f,  // G   (7 semitones)
+            1.58740f,  // Ab  (8 semitones)
+            1.78180f,  // Bb  (10 semitones)
+            2.0f       // C   (12 semitones)
+        };
+
+        static constexpr int kNumNotes = 8; // same length for major/minor
+
+        // Pot-value thresholds for snapping to the scale (like before).
+        // Each threshold splits the pot range into 8 "zones" for 8 notes.
         static constexpr float kThresholds[] = {
-            0.125f, // between scale[0] and scale[1]
+            0.125f,
             0.25f,
             0.375f,
             0.5f,
@@ -320,6 +358,11 @@ namespace recorder
         // Button states
         bool was_button_pressed_;             // For the normal "voice" button
         bool was_freq_select_button_pressed_; // For the new fundamental-freq button
+
+        // NEW: Track previous hold state + toggle for major/minor
+        bool was_hold_;
+        bool is_minor_;
+
         bool vowel_set_;
         int previousTargetIndex_;
 
@@ -333,8 +376,7 @@ namespace recorder
         PulseGenerator pulse_generator_;
         DelayEngine delay_;
         OnePoleHighpass highpass_filter_;
-
-        // Vibrato effect
+        CyclopsCompressor compressor_;
         Vibrato vibrato_;
 
         // ADSR parameters
@@ -384,6 +426,7 @@ namespace recorder
             // Additional gain for narrower pulses, if needed
             sample *= duty_gain_;
             sample = highpass_filter_.Process(sample);
+            sample = compressor_.Process(sample);
 
             // Delay effect
             sample = delay_.Process(sample, delay_time_, delay_feedback_);
@@ -474,13 +517,17 @@ namespace recorder
 
         //--------------------------------------------------------------------------
         //  For normal (voice-button) operation: pick a diatonic note from pot_value
+        //  using either the major or minor scale array, depending on is_minor_.
         //--------------------------------------------------------------------------
         void UpdatePitchWithScale(float pot_value)
         {
             int targetIndex = DetermineTargetIndex(pot_value);
             PossiblyUpdateVowel(targetIndex);
 
-            float baseTargetFrequency = fundamentalFreq_ * kDiatonicRatios[targetIndex] * freq_mult_;
+            // Choose major vs. minor array
+            const float *scaleArray = is_minor_ ? kDiatonicMinorRatios : kDiatonicMajorRatios;
+
+            float baseTargetFrequency = fundamentalFreq_ * scaleArray[targetIndex] * freq_mult_;
 
             PossiblyUpdateFrequencyOffset(baseTargetFrequency);
 
@@ -537,7 +584,7 @@ namespace recorder
         {
             // If counter expired or frequency is near the old target, pick a new offset
             if (offsetCounter_ <= 0 ||
-                std::abs(currentFrequency_ - (baseTargetFrequency + targetFrequencyOffset_)) < frequencyMargin_)
+                std::fabs(currentFrequency_ - (baseTargetFrequency + targetFrequencyOffset_)) < frequencyMargin_)
             {
                 // freq_wobbliness_ is controlling the +/- offset range
                 float maxOffset = baseTargetFrequency * freq_wobbliness_;
@@ -560,7 +607,8 @@ namespace recorder
 
         FormantFilter::Vowel GetRandomVowel()
         {
-            // 10 total vowels: VOWEL_I to VOWEL_SCHWA
+            // 10 total vowels: VOWEL_I to VOWEL_SCHWA (in your FormantFilter)
+            // If you only have 6 or so, adjust accordingly.
             constexpr int numVowels = 6;
             int randomIndex = std::rand() % numVowels;
             return static_cast<FormantFilter::Vowel>(randomIndex);

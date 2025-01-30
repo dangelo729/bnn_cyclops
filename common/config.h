@@ -10,7 +10,7 @@ constexpr float kAudioSampleRate = 16000;
 constexpr uint32_t kAudioOSFactor = std::ceil(48000.0 / kAudioSampleRate);
 constexpr float kAudioOSRate = kAudioSampleRate * kAudioOSFactor;
 
-constexpr float kAudioOutputLevel = 1.4;
+constexpr float kAudioOutputLevel = 1.0;
 constexpr float kAudioFadeTime = 20e-3;
 constexpr uint32_t kButtonDebounceDuration_ms = 10;
 constexpr float kIdleStandbyTime = 60;
