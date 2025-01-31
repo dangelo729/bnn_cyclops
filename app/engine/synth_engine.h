@@ -82,7 +82,7 @@ namespace recorder
 
             // Set up pulse generator
             pulse_generator_.SetBaseDutyCycle(0.001f);
-            duty_gain_ = 2.0;
+            duty_gain_ = 1.3;
             freq_wobbliness_ = 0.0f;
             pulse_generator_.SetDutyCycleRandomization(0.0f);
 
@@ -145,12 +145,12 @@ namespace recorder
             // Only do this "ROBOT TO MONK" mapping if the formant pot value has changed
             if (std::fabs(formant_pot_val - previous_formant_pot_val_) > 0.05f)
             {
-                freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.001f);
-                freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00f, 0.05f);
+                freq_rate_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.0008f);
+                freq_wobbliness_ = mapFloat(formant_pot_val, 0.0f, 1.0f, 0.00f, 0.09f);
                 pulse_generator_.SetDutyCycleRandomization(
                     mapFloat(formant_pot_val, 0.0f, 1.0f, 0.0f, 1.0f));
                 formant_filter_.SetFormantRate(
-                    mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.00001f));
+                    mapFloat(formant_pot_val, 0.0f, 1.0f, 0.1f, 0.0000001f));
                 previous_formant_pot_val_ = formant_pot_val;
             }
 
@@ -291,14 +291,14 @@ namespace recorder
          *        (intervals: 0,2,3,5,7,8,10,12 semitones).
          */
         static constexpr float kDiatonicMinorRatios[] = {
-            1.0f,      // C   (0 semitones)
-            1.12246f,  // D   (2 semitones)
-            1.18921f,  // Eb  (3 semitones)
-            1.33484f,  // F   (5 semitones)
-            1.49831f,  // G   (7 semitones)
-            1.58740f,  // Ab  (8 semitones)
-            1.78180f,  // Bb  (10 semitones)
-            2.0f       // C   (12 semitones)
+            1.0f,     // C   (0 semitones)
+            1.12246f, // D   (2 semitones)
+            1.18921f, // Eb  (3 semitones)
+            1.33484f, // F   (5 semitones)
+            1.49831f, // G   (7 semitones)
+            1.58740f, // Ab  (8 semitones)
+            1.78180f, // Bb  (10 semitones)
+            2.0f      // C   (12 semitones)
         };
 
         static constexpr int kNumNotes = 8; // same length for major/minor

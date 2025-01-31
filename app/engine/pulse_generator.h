@@ -62,7 +62,7 @@ namespace recorder
                 // Generate random value between -1 and 1
                 float random_offset = ((static_cast<float>(std::rand()) / RAND_MAX) * 2.0f - 1.0f);
                 // Scale by randomization amount and clamp result
-                float max_offset = 0.3f * duty_cyclerandomization; // Max 30% variation at full randomization
+                float max_offset = 0.6f * duty_cyclerandomization; // Max 60% variation at full randomization
                 float offset = random_offset * max_offset;
                 current_dutycycle = std::max(0.1f, std::min(0.9f, base_dutycycle + offset));
             }
